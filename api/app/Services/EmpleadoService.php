@@ -50,7 +50,8 @@ class EmpleadoService
         $data['correo_electronico'] = $this->generateEmail(
           $data['primer_nombre'] ?? $empleado->primer_nombre,
           $data['primer_apellido'] ?? $empleado->primer_apellido,
-          $data['pais_del_empleo'] ?? $empleado->pais_del_empleo
+          $data['pais_del_empleo'] ?? $empleado->pais_del_empleo,
+          $data['id'] ?? $empleado->id
         );
       }
 
@@ -111,18 +112,25 @@ class EmpleadoService
     }
   }
 
-  private function generateEmail($primer_nombre, $primer_apellido, $pais)
+  private function generateEmail($primer_nombre, $primer_apellido, $pais, $empleadoId = null)
   {
     $dominio = $pais === 'Colombia' ? 'global.com.co' : 'global.com.us';
     $email_base = strtolower($primer_nombre . '.' . $primer_apellido);
     $email = $email_base . '@' . $dominio;
     $counter = 1;
 
-    while (Empleado::where('correo_electronico', $email)->exists()) {
+    while (
+      Empleado::where('correo_electronico', $email)
+        ->when($empleadoId, function ($query, $empleadoId) {
+          return $query->where('id', '!=', $empleadoId);
+        })
+        ->exists()
+    ) {
       $email = $email_base . '.' . $counter . '@' . $dominio;
       $counter++;
     }
 
     return $email;
   }
+
 }

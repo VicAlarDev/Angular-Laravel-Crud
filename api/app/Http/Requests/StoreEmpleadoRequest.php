@@ -27,7 +27,7 @@ class StoreEmpleadoRequest extends FormRequest
             'primer_apellido' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
             'segundo_apellido' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
             'primer_nombre' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
-            'otros_nombres' => 'nullable|regex:/^[A-Z ][a-z]{1,50}$/',
+            'otros_nombres' => 'nullable|regex:/^[A-Z][a-z]{1,50}$/',
             'pais_del_empleo' => 'required|in:Colombia,Estados Unidos',
             'tipo_de_identificacion' => 'required|in:Cédula de Ciudadanía,Cédula de Extranjería,Pasaporte,Permiso Especial',
             'numero_de_identificacion' => 'required|alpha_dash|max:20|unique:empleados,numero_de_identificacion',
