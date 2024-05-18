@@ -39,4 +39,9 @@ class EmpleadoController extends Controller
     {
         return $this->empleadoService->deleteEmpleado($id);
     }
+
+    public function paginated($num)
+    {
+        return $this->empleadoService->getEmpleadosPaginated($num);
+    }
 }

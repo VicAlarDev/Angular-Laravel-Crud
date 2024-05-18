@@ -50,4 +50,13 @@ class EmpleadoRepository implements EmpleadoRepositoryInterface
     {
         return Empleado::where("id", $id)->update($data);
     }
+
+    /**
+     *
+     * @param mixed $num
+     */
+    public function paginated($num)
+    {
+        return Empleado::paginate($num);
+    }
 }

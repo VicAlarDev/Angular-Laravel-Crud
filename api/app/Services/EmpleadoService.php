@@ -112,6 +112,18 @@ class EmpleadoService
     }
   }
 
+  public function getEmpleadosPaginated($num)
+  {
+    try {
+      $empleados = $this->empleadoRepository->paginated($num);
+      $this->logger->info("Todos los empleados paginados obtenidos con éxito", ['count' => count($empleados)]);
+      return ApiResponseClass::sendResponse($empleados, 'Todos los empleados paginados obtenidos con éxito');
+    } catch (Exception $e) {
+      $this->logger->error("Ha ocurrido un error al intentar obtener todos los empleados paginados", ['exception' => $e]);
+      return ApiResponseClass::rollback($e, "Error al obtener todos los empleados paginados");
+    }
+  }
+
   private function generateEmail($primer_nombre, $primer_apellido, $pais, $empleadoId = null)
   {
     $dominio = $pais === 'Colombia' ? 'global.com.co' : 'global.com.us';

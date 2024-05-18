@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Empleados Routes
 Route::prefix('empleados')->group(function () {
     Route::get('/', [EmpleadoController::class, 'index'])->name('empleados.index');
+    Route::get('/paged/{num}', [EmpleadoController::class, 'paginated'])->name('empleados.paginated');
     Route::post('/', [EmpleadoController::class, 'store'])->name('empleados.store');
     Route::get('/{id}', [EmpleadoController::class, 'show'])->name('empleados.show');
     Route::patch('/{id}', [EmpleadoController::class, 'update'])->name('empleados.update');

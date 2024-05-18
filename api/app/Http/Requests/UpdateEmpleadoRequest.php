@@ -25,10 +25,10 @@ class UpdateEmpleadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'primer_apellido' => 'nullable|regex:/^[A-Z][a-z]{1,20}$/',
-            'segundo_apellido' => 'nullable|regex:/^[A-Z][a-z]{1,20}$/',
-            'primer_nombre' => 'nullable|regex:/^[A-Z][a-z]{1,20}$/',
-            'otros_nombres' => 'nullable|regex:/^[A-Z ][a-z]{1,50}$/',
+            'primer_apellido' => 'nullable|regex:/^[A-Z]{1,20}$/',
+            'segundo_apellido' => 'nullable|regex:/^[A-Z]{1,20}$/',
+            'primer_nombre' => 'nullable|regex:/^[A-Z]{1,20}$/',
+            'otros_nombres' => 'nullable|regex:/^[A-Z\s]{1,51}$/',
             'pais_del_empleo' => 'nullable|in:Colombia,Estados Unidos',
             'tipo_de_identificacion' => 'nullable|in:Cédula de Ciudadanía,Cédula de Extranjería,Pasaporte,Permiso Especial',
             'numero_de_identificacion' => [

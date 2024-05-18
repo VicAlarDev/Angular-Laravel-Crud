@@ -1,0 +1,350 @@
+<div class="register-form">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-4xl mx-auto"
+  >
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="primer_nombre"
+        >
+          Primer Nombre
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="primer_nombre"
+          type="text"
+          formControlName="primer_nombre"
+          placeholder="Primer Nombre"
+          [ngClass]="{ 'is-invalid': submitted && f['primer_nombre'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['primer_nombre'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['primer_nombre'].errors['required']">
+            Primer Nombre es requerido
+          </div>
+          <div *ngIf="f['primer_nombre'].errors['minlength']">
+            Debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="f['primer_nombre'].errors['maxlength']">
+            No debe exceder 20 caracteres
+          </div>
+          <div *ngIf="f['primer_nombre'].errors['pattern']">
+            Primer Nombre inválido (Solo Mayúsculas)
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="otros_nombres"
+        >
+          Otro Nombre
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="otros_nombres"
+          type="text"
+          formControlName="otros_nombres"
+          placeholder="Otro Nombre"
+          [ngClass]="{ 'is-invalid': submitted && f['otros_nombres'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['otros_nombres'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['otros_nombres'].errors['minlength']">
+            Debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="f['otros_nombres'].errors['maxlength']">
+            No debe exceder 20 caracteres
+          </div>
+          <div *ngIf="f['otros_nombres'].errors['pattern']">
+            Otro Nombre inválido (Solo Mayúsculas)
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="primer_apellido"
+        >
+          Primer Apellido
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="primer_apellido"
+          type="text"
+          formControlName="primer_apellido"
+          placeholder="Primer Apellido"
+          [ngClass]="{ 'is-invalid': submitted && f['primer_apellido'].errors }"
+        />
+        <div
+          *ngIf="submitted && f['primer_apellido'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['primer_apellido'].errors['required']">
+            Primer Apellido es requerido
+          </div>
+          <div *ngIf="f['primer_apellido'].errors['minlength']">
+            Debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="f['primer_apellido'].errors['maxlength']">
+            No debe exceder 20 caracteres
+          </div>
+          <div *ngIf="f['primer_apellido'].errors['pattern']">
+            Primer Apellido inválido (Solo Mayúsculas)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="segundo_apellido"
+        >
+          Segundo Apellido
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="segundo_apellido"
+          type="text"
+          formControlName="segundo_apellido"
+          placeholder="Segundo Apellido"
+          [ngClass]="{
+            'is-invalid': submitted && f['segundo_apellido'].errors
+          }"
+        />
+        <div
+          *ngIf="submitted && f['segundo_apellido'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['segundo_apellido'].errors['required']">
+            Segundo Apellido es requerido
+          </div>
+          <div *ngIf="f['segundo_apellido'].errors['minlength']">
+            Debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="f['segundo_apellido'].errors['maxlength']">
+            No debe exceder 20 caracteres
+          </div>
+          <div *ngIf="f['segundo_apellido'].errors['pattern']">
+            Segundo Apellido inválido (Solo Mayúsculas)
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="tipo_de_identificacion"
+        >
+          Tipo de Identificación
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="tipo_de_identificacion"
+            formControlName="tipo_de_identificacion"
+            [ngClass]="{
+              'is-invalid': submitted && f['tipo_de_identificacion'].errors
+            }"
+          >
+            <option value="">Seleccione</option>
+            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+            <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+            <option value="Pasaporte">Pasaporte</option>
+            <option value="Permiso Especial">Permiso Especial</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          *ngIf="submitted && f['tipo_de_identificacion'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['tipo_de_identificacion'].errors['required']">
+            Tipo de Identificación es requerido
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="numero_de_identificacion"
+        >
+          Número de Cédula
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="numero_de_identificacion"
+          type="text"
+          formControlName="numero_de_identificacion"
+          placeholder="Número de Cédula"
+          [ngClass]="{
+            'is-invalid': submitted && f['numero_de_identificacion'].errors
+          }"
+        />
+        <div
+          *ngIf="submitted && f['numero_de_identificacion'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['numero_de_identificacion'].errors['required']">
+            Número de Cédula es requerido
+          </div>
+          <div *ngIf="f['numero_de_identificacion'].errors['minlength']">
+            Debe tener 9 caracteres
+          </div>
+          <div *ngIf="f['numero_de_identificacion'].errors['maxlength']">
+            No debe exceder 20 caracteres
+          </div>
+          <div *ngIf="f['numero_de_identificacion'].errors['pattern']">
+            Número de Cédula inválido
+          </div>
+          <div
+            *ngIf="f['numero_de_identificacion'].errors?.['serverError']"
+            class="error-message"
+          >
+            {{ f["numero_de_identificacion"].errors["serverError"] }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="fecha_de_ingreso"
+        >
+          Fecha de Ingreso
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+          id="fecha_de_ingreso"
+          type="date"
+          formControlName="fecha_de_ingreso"
+          placeholder="Fecha de Ingreso"
+          [ngClass]="{
+            'is-invalid': submitted && f['fecha_de_ingreso'].errors
+          }"
+        />
+        <div
+          *ngIf="submitted && f['fecha_de_ingreso'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['fecha_de_ingreso'].errors['required']">
+            Fecha de Ingreso es requerida
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="pais_del_empleo"
+        >
+          País del empleo
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="pais_del_empleo"
+            formControlName="pais_del_empleo"
+            [ngClass]="{
+              'is-invalid': submitted && f['pais_del_empleo'].errors
+            }"
+          >
+            <option value="">Seleccione</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          *ngIf="submitted && f['pais_del_empleo'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['pais_del_empleo'].errors['required']">
+            País del empleo es requerido
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="area"
+        >
+          Área
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="area"
+            formControlName="area"
+            [ngClass]="{ 'is-invalid': submitted && f['area'].errors }"
+          >
+            <option value="">Seleccione</option>
+            <option value="Administración">Administración</option>
+            <option value="Financiera">Financiera</option>
+            <option value="Compras">Compras</option>
+            <option value="Infraestructura">Infraestructura</option>
+            <option value="Operación">Operación</option>
+            <option value="Talento Humano">Talento Humano</option>
+            <option value="Servicios Varios">Servicios Varios</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div *ngIf="submitted && f['area'].errors" class="invalid-feedback">
+          <div *ngIf="f['area'].errors['required']">Área es requerida</div>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+      (click)="onSubmit()"
+    >
+      Guardar
+    </button>
+  </form>
+</div>

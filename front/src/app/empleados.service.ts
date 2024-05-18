@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, type HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +18,23 @@ export class EmpleadosService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  crearEmpleado(empleadoData: any): Observable<any> {
-    return this.http.post(this.apiUrl, empleadoData);
+  crearEmpleado(empleadoData: any) {
+    return this.http
+      .post(`${this.apiUrl}`, empleadoData)
+      .pipe(catchError((error) => throwError(error)));
   }
 
-  actualizarEmpleado(id: number, empleadoData: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, empleadoData);
+  actualizarEmpleado(id: number, empleadoData: any) {
+    return this.http
+      .patch(`${this.apiUrl}/${id}`, empleadoData)
+      .pipe(catchError((error) => throwError(error)));
   }
 
   eliminarEmpleado(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  empleadosPaginados(page: number, perPage: number = 10): Observable<any> {
+    return this.http.get(`${this.apiUrl}/paged/${perPage}?page=${page}`);
   }
 }

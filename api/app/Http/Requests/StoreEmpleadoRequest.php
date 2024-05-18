@@ -24,10 +24,10 @@ class StoreEmpleadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'primer_apellido' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
-            'segundo_apellido' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
-            'primer_nombre' => 'required|regex:/^[A-Z][a-z]{1,20}$/',
-            'otros_nombres' => 'nullable|regex:/^[A-Z][a-z]{1,50}$/',
+            'primer_apellido' => 'required|regex:/^[A-Z]{1,20}$/',
+            'segundo_apellido' => 'required|regex:/^[A-Z]{1,20}$/',
+            'primer_nombre' => 'required|regex:/^[A-Z]{1,20}$/',
+            'otros_nombres' => 'nullable|regex:/^[A-Z\s]{1,51}$/',
             'pais_del_empleo' => 'required|in:Colombia,Estados Unidos',
             'tipo_de_identificacion' => 'required|in:Cédula de Ciudadanía,Cédula de Extranjería,Pasaporte,Permiso Especial',
             'numero_de_identificacion' => 'required|alpha_dash|max:20|unique:empleados,numero_de_identificacion',
@@ -42,6 +42,6 @@ class StoreEmpleadoRequest extends FormRequest
             'success' => false,
             'message' => 'Error de validación',
             'data' => $validator->errors()
-        ]));
+        ], 422));
     }
 }
